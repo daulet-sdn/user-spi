@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+}
+
+group = 'kz.eub'
+version = '1.0-SNAPSHOT'
+
+jar {
+    enabled = true
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    keycloakVersion = '18.0.2'
+    commonCodecVersion = '1.16.0'
+    postgresDriverVersion = '42.1.4'
+}
+
+dependencies {
+    implementation "commons-codec:commons-codec:${commonCodecVersion}"
+    implementation "org.postgresql:postgresql:${postgresDriverVersion}"
+    implementation "org.keycloak:keycloak-core:${keycloakVersion}"
+    compileOnly "org.keycloak:keycloak-server-spi:${keycloakVersion}"
+    compileOnly "org.keycloak:keycloak-server-spi-private:${keycloakVersion}"
+    compileOnly "org.keycloak:keycloak-services:${keycloakVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
